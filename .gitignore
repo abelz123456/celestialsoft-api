@@ -1,0 +1,33 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+
+# Temp files
+*~
+*.out
+*.test
+
+# OS generated files
+.DS_Store
+Icon?
+
+# Dependency directories
+/bin
+/pkg
+/vendor
+
+# Code Editor
+.vscode/
+
+# Test generated files
+cover.html
+log.txt
+.tmp/
