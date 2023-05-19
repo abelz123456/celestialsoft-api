@@ -135,7 +135,7 @@ func (c *controller) UpdateOne(ctx *gin.Context) {
 
 // @Tags		Bank
 // @Router		/bank/{oid} [delete]
-// @Summary		Detail Bank
+// @Summary		Delete Bank
 // @Description	Detail Bank
 // @Param		oid path string true "oid of Bank"
 // @Param 		Authorization header string true "With value 'Bearer {authToken}'"
