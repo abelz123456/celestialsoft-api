@@ -1,0 +1,257 @@
+basePath: /
+definitions:
+  domain.CreateBankDto:
+    properties:
+      bankCode:
+        type: string
+      bankName:
+        type: string
+    required:
+    - bankCode
+    - bankName
+    type: object
+  domain.PayloadLogin:
+    properties:
+      emailName:
+        example: me@mail.com
+        type: string
+      password:
+        example: securePassword
+        type: string
+    required:
+    - emailName
+    - password
+    type: object
+  domain.PayloadRegister:
+    properties:
+      emailName:
+        example: me@mail.com
+        type: string
+      password:
+        example: securePassword
+        type: string
+    required:
+    - emailName
+    - password
+    type: object
+  domain.UpdateBankDto:
+    properties:
+      bankName:
+        type: string
+    required:
+    - bankName
+    type: object
+  response.ResponseProperties:
+    properties:
+      data: {}
+      httpStatus:
+        type: integer
+      message:
+        type: string
+      resultCode:
+        type: string
+    type: object
+host: localhost:8001
+info:
+  contact: {}
+  title: Celestialsoftware API
+  version: v1.0
+paths:
+  /auth/login:
+    post:
+      description: Basic JSON Authentication
+      parameters:
+      - description: Login info
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.PayloadLogin'
+      produces:
+      - application/json
+      responses:
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: User Authentication API
+      tags:
+      - Authentication
+  /auth/register:
+    post:
+      description: Basic JSON Authentication
+      parameters:
+      - description: Login info
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.PayloadRegister'
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: User Authentication API
+      tags:
+      - Authentication
+  /bank:
+    get:
+      description: Get Bank Collection
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Ok
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "400":
+          description: General Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "401":
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: Get Bank Collection
+      tags:
+      - Bank
+    post:
+      description: Create New Bank
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Bank Information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CreateBankDto'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "400":
+          description: General Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "401":
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: Create New Bank
+      tags:
+      - Bank
+  /bank/{oid}:
+    delete:
+      description: Detail Bank
+      parameters:
+      - description: oid of Bank
+        in: path
+        name: oid
+        required: true
+        type: string
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "400":
+          description: General Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "401":
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: Detail Bank
+      tags:
+      - Bank
+    get:
+      description: Detail Bank
+      parameters:
+      - description: oid of Bank
+        in: path
+        name: oid
+        required: true
+        type: string
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "400":
+          description: General Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "401":
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: Detail Bank
+      tags:
+      - Bank
+    patch:
+      description: Update Bank
+      parameters:
+      - description: oid of Bank
+        in: path
+        name: oid
+        required: true
+        type: string
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: New Bank Information
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UpdateBankDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "400":
+          description: General Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+        "401":
+          description: Authentication Error
+          schema:
+            $ref: '#/definitions/response.ResponseProperties'
+      summary: Update Bank
+      tags:
+      - Bank
+swagger: "2.0"
