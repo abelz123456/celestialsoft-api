@@ -33,7 +33,7 @@ jobs:
           docker push "$REGISTRY/$NAMESPACE/backend-$APP_NAME:$TAG"
       - name: Docker Containerize (DB Migration) -> (BUILD & PUSH)
         run: |
-          docker build --pull -t "$REGISTRY/$NAMESPACE/dbmigration-$APP_NAME:$TAG" - container/migration.Dockerfile .
+          docker build --pull -t "$REGISTRY/$NAMESPACE/dbmigration-$APP_NAME:$TAG" -f container/migration.Dockerfile .
           docker push "$REGISTRY/$NAMESPACE/dbmigration-$APP_NAME:$TAG"
       - name: Call Portainer Webhook
         run: |
