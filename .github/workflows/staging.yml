@@ -1,0 +1,53 @@
+name: 'Staging Deployment 🚀'
+
+env:
+  REGISTRY: ${{secrets.REGISTRY}}
+  REGISTRY_USER: ${{secrets.STAGING_REGISTRY_USER}}
+  REGISTRY_TOKEN: ${{secrets.STAGING_REGISTRY_PASS}}
+  PORTAINER_WEBHOOK: ${{secrets.STAGING_CONTAINER_WEBHOOK}}
+  NAMESPACE: staging
+  APP_NAME: celestial-api
+  TAG: latest
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  staging_deploy:
+    runs-on: self-hosted
+    environment:
+      name: Staging
+      url: https://api.stg.celestialsoftwaresolutuions.my.id
+    steps:
+      - name: Whoami
+        run: whoami
+      - uses: actions/checkout@v3
+      - name: Login -> Docker
+        run: docker login -u $REGISTRY_USER -p $REGISTRY_TOKEN $REGISTRY
+      - name: Docker Containerize (Backend) -> (BUILD & PUSH)
+        run: |
+          docker build --pull -t "$REGISTRY/$NAMESPACE/backend-$APP_NAME:$TAG" -f container/backend.Dockerfile .
+          docker push "$REGISTRY/$NAMESPACE/backend-$APP_NAME:$TAG"
+      - name: Docker Containerize (DB Migration) -> (BUILD & PUSH)
+        run: |
+          docker build --pull -t "$REGISTRY/$NAMESPACE/dbmigration-$APP_NAME:$TAG" - container/migration.Dockerfile .
+          docker push "$REGISTRY/$NAMESPACE/dbmigration-$APP_NAME:$TAG"
+      - name: Call Portainer Webhook
+        run: |
+          curl -X POST $PORTAINER_WEBHOOK
+      - name: Clean unused Images
+        run: |
+          echo '#!/bin/sh
+          for tag in $(docker image ls --format '{{.Tag}}:{{.ID}}')
+          do
+              IFS=":" read -ra tags <<< "$tag"
+              if [ "${tags[0]}" == "<none>" ]
+              then
+                  docker image rm -f "${tags[1]}"
+              fi
+          done' > prune.sh
+          sudo chmod +x prune.sh
+          ./prune.sh
