@@ -7,17 +7,17 @@ import (
 )
 
 type ApiResponse string
-type responseProperties struct {
+type ResponseProperties struct {
 	ResultCode string      `json:"resultCode"`
 	HttpStatus int         `json:"httpStatus"`
 	Message    string      `json:"message,omitempty"`
-	Total      int         `json:"total,omitempty"`
+	Total      int         `json:"-"`
 	Data       interface{} `json:"data,omitempty"`
 }
 
-func getProperties(r ApiResponse) (responseProperties, bool) {
-	responseMap := make(map[ApiResponse]responseProperties)
-	noProperty := responseProperties{
+func getProperties(r ApiResponse) (ResponseProperties, bool) {
+	responseMap := make(map[ApiResponse]ResponseProperties)
+	noProperty := ResponseProperties{
 		ResultCode: "000",
 		HttpStatus: http.StatusFailedDependency,
 		Message:    "Response %s is not in responseMap",

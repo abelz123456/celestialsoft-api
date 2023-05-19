@@ -35,7 +35,7 @@ func TestMySQL_Save(t *testing.T) {
 
 	// Set the expected behavior for the mock DB
 	mock.ExpectBegin()
-	mock.ExpectExec("INSERT INTO `permissionpolicyuser`").
+	mock.ExpectExec("INSERT INTO `permissionPolicyUser`").
 		WillReturnResult(sqlmock.NewResult(1, 1))
 
 	// mock.ExpectQuery()
@@ -65,7 +65,7 @@ func TestErrorMySQL_Save(t *testing.T) {
 
 	// Set the expected behavior for the mock DB
 	mock.ExpectBegin()
-	mock.ExpectExec("INSERT INTO `permissionpolicyuser`").
+	mock.ExpectExec("INSERT INTO `permissionPolicyUser`").
 		WillReturnError(errors.New("duplicate primary key error"))
 	mock.ExpectRollback()
 

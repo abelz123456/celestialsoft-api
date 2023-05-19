@@ -30,6 +30,7 @@ func Init(cfg config.Config) (*Server, error) {
 	engine.Use(middleware.CORSMiddleware)
 	engine.Use(gin.Logger())
 	engine.Use(middleware.RecoveryMiddleware())
+	engine.SetTrustedProxies(cfg.TrustedProxies)
 
 	return &Server{
 		logger: log.NewLog(),

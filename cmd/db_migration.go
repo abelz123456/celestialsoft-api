@@ -21,8 +21,8 @@ func main() {
 	db, err := database.NewDatabase(conf)
 	log.PanicOnError(err, "Database migration aborted", nil)
 
-	if conf.AppEnv != "development" || db.Driver == database.Mongo {
-		log.Warning("Database migration aborted", nil, nil)
+	if db.Driver == database.Mongo {
+		log.Info("Database migration aborted, because the database used does not require this", map[string]string{"dbDriver": db.Driver.String()})
 		return
 	}
 

@@ -25,6 +25,12 @@ func NewController(mgr manager.Manager) domain.Controller {
 	}
 }
 
+// @Tags		Authentication
+// @Router		/auth/login [post]
+// @Summary		User Authentication
+// @Produce 	application/json
+// @Param 		data body domain.PayloadLogin true "Login info"
+// @Failure 	401 {object} response.ResponseProperties
 func (c *controller) Login(ctx *gin.Context) {
 	var loginInfo domain.PayloadLogin
 
@@ -53,6 +59,13 @@ func (c *controller) Login(ctx *gin.Context) {
 	response.SendJson(ctx, response.Ok, "", result)
 }
 
+// @Tags		Authentication
+// @Router		/auth/register [post]
+// @Summary		User Registration
+// @Produce 	application/json
+// @Param 		data body domain.PayloadRegister true "Login info"
+// @Failure 	400 {object} response.ResponseProperties
+// @Failure 	403 {object} response.ResponseProperties
 func (c *controller) Register(ctx *gin.Context) {
 	var userDto domain.PayloadRegister
 

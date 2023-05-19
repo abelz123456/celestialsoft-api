@@ -1,13 +1,13 @@
 package domain
 
 type PayloadRegister struct {
-	EmailName string `json:"emailName" validate:"required,email"`
-	Password  string `json:"password" validate:"required"`
+	EmailName string `json:"emailName" validate:"required,email" example:"me@mail.com"`
+	Password  string `json:"password" validate:"required" example:"securePassword"`
 }
 
 type PayloadLogin struct {
-	EmailName string `json:"emailName" validate:"required,email"`
-	Password  string `json:"password" validate:"required"`
+	EmailName string `json:"emailName" validate:"required,email" example:"me@mail.com"`
+	Password  string `json:"password" validate:"required" example:"securePassword"`
 }
 
 type PermissionPolicyUserVm struct {
@@ -15,7 +15,7 @@ type PermissionPolicyUserVm struct {
 	CompanyName *string `json:"companyName"`
 	Address     *string `json:"address"`
 	EmailName   string  `json:"emailName"`
-	Password    string  `json:"password"`
+	Password    string  `json:"-"`
 	Token       *string `json:"token"`
 }
 

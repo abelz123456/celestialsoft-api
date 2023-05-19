@@ -7,7 +7,7 @@ const (
 	Created ApiResponse = "20101"
 )
 
-var successResponseMap = map[ApiResponse]responseProperties{
+var successResponseMap = map[ApiResponse]ResponseProperties{
 	Ok: {
 		ResultCode: string(Ok),
 		HttpStatus: http.StatusOK,

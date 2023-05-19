@@ -32,3 +32,12 @@ cover.html
 log.txt
 .tmp/
 docs/
+
+# Git
+.github/
+.git/
+.git*
+
+# Dockerfiles
+container/
+.dockerignore

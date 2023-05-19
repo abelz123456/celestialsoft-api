@@ -22,6 +22,14 @@ func NewController(mgr manager.Manager) domain.Controller {
 	}
 }
 
+// @Tags		Bank
+// @Router		/bank [get]
+// @Summary		Get Bank Collection
+// @Description	Get Bank Collection
+// @Param 		Authorization header string true "With value 'Bearer {authToken}'"
+// @Success		200 {object} response.ResponseProperties "Ok"
+// @Failure 	400 {object} response.ResponseProperties "General Error"
+// @Failure 	401 {object} response.ResponseProperties "Authentication Error"
 func (c *controller) GetList(ctx *gin.Context) {
 	result, err := c.service.GetList(ctx.Request.Context())
 	if err != nil {
@@ -32,6 +40,16 @@ func (c *controller) GetList(ctx *gin.Context) {
 	response.SendJson(ctx, response.Ok, "", result)
 }
 
+// @Tags		Bank
+// @Router		/bank [post]
+// @Summary		Create New Bank
+// @Description	Create New Bank
+// @Param 		Authorization header string true "With value 'Bearer {authToken}'"
+// @Produce 	application/json
+// @Param 		data body domain.CreateBankDto true "Bank Information"
+// @Success		201 {object} response.ResponseProperties "Created"
+// @Failure 	400 {object} response.ResponseProperties "General Error"
+// @Failure 	401 {object} response.ResponseProperties "Authentication Error"
 func (c *controller) CreateNew(ctx *gin.Context) {
 	var data domain.CreateBankDto
 
@@ -55,6 +73,15 @@ func (c *controller) CreateNew(ctx *gin.Context) {
 	response.SendJson(ctx, response.Ok, "", result)
 }
 
+// @Tags		Bank
+// @Router		/bank/{oid} [get]
+// @Summary		Detail Bank
+// @Description	Detail Bank
+// @Param		oid path string true "oid of Bank"
+// @Param 		Authorization header string true "With value 'Bearer {authToken}'"
+// @Success		200 {object} response.ResponseProperties "OK"
+// @Failure 	400 {object} response.ResponseProperties "General Error"
+// @Failure 	401 {object} response.ResponseProperties "Authentication Error"
 func (c *controller) GetOne(ctx *gin.Context) {
 	oid, _ := ctx.Params.Get("oid")
 
@@ -72,6 +99,17 @@ func (c *controller) GetOne(ctx *gin.Context) {
 	response.SendJson(ctx, response.Ok, "", result)
 }
 
+// @Tags		Bank
+// @Router		/bank/{oid} [patch]
+// @Summary		Update Bank
+// @Description	Update Bank
+// @Param		oid path string true "oid of Bank"
+// @Param 		Authorization header string true "With value 'Bearer {authToken}'"
+// @Produce 	application/json
+// @Param 		data body domain.UpdateBankDto true "New Bank Information"
+// @Success		200 {object} response.ResponseProperties "OK"
+// @Failure 	400 {object} response.ResponseProperties "General Error"
+// @Failure 	401 {object} response.ResponseProperties "Authentication Error"
 func (c *controller) UpdateOne(ctx *gin.Context) {
 	var data domain.UpdateBankDto
 	oid, _ := ctx.Params.Get("oid")
@@ -95,6 +133,15 @@ func (c *controller) UpdateOne(ctx *gin.Context) {
 	response.SendJson(ctx, response.Ok, "", map[string]interface{}{"newData": result})
 }
 
+// @Tags		Bank
+// @Router		/bank/{oid} [delete]
+// @Summary		Detail Bank
+// @Description	Detail Bank
+// @Param		oid path string true "oid of Bank"
+// @Param 		Authorization header string true "With value 'Bearer {authToken}'"
+// @Success		200 {object} response.ResponseProperties "OK"
+// @Failure 	400 {object} response.ResponseProperties "General Error"
+// @Failure 	401 {object} response.ResponseProperties "Authentication Error"
 func (c *controller) Delete(ctx *gin.Context) {
 	oid, _ := ctx.Params.Get("oid")
 
