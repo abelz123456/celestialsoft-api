@@ -5,6 +5,8 @@ type Config struct {
 	AppName         string `mapstructure:"APP_NAME"`
 	AppEnv          string `mapstructure:"APP_ENV"`
 	DevelopmentPort string `mapstructure:"DEVELOPMENT_PORT"`
+	SecretKey       string `mapstructure:"SECRET_KEY"`
+	JwtExpiredTime  int    `mapstructure:"JWT_EXPIRED_TIME"`
 
 	DBUsed string `mapstructure:"DB_USED"` // mysql | postgres | mongodb
 
@@ -24,4 +26,5 @@ type Config struct {
 	MongoDBPort int    `mapstructure:"MONGO_DB_PORT"`
 	MongoDBUser string `mapstructure:"MONGO_DB_USER"`
 	MongoDBPass string `mapstructure:"MONGO_DB_PASS"`
+	MongoDBName string `mapstructure:"MONGO_DB_NAME"`
 }

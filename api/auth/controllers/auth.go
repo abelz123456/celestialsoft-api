@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"errors"
-
 	"github.com/abelz123456/celestial-api/api/auth/domain"
 	"github.com/abelz123456/celestial-api/api/auth/mapping"
 	"github.com/abelz123456/celestial-api/api/auth/services"
@@ -28,8 +26,31 @@ func NewController(mgr manager.Manager) domain.Controller {
 }
 
 func (c *controller) Login(ctx *gin.Context) {
-	c.Manager.Logger.Panic(errors.New("test fatal"), "", nil)
-	response.SendJson(ctx, response.Ok, "", []map[string]interface{}{{"look": "at this.."}})
+	var loginInfo domain.PayloadLogin
+
+	if err := ctx.ShouldBindJSON(&loginInfo); err != nil {
+		response.SendJson(ctx, response.ErrForm1Forbidden, "", err)
+		return
+	}
+
+	if err := c.Validator.Struct(loginInfo); err != nil {
+		mapError := helpers.ValidationErrorToMap(err)
+		response.SendJson(ctx, response.ErrForm1Forbidden, "", mapError)
+		return
+	}
+
+	result, err := c.Service.Login(ctx.Request.Context(), loginInfo)
+	if err != nil {
+		response.SendJson(ctx, response.ErrFailedLogin, "", err)
+		return
+	}
+
+	if result == nil {
+		response.SendJson(ctx, response.ErrFailedLogin, "Incorrect email or password", err)
+		return
+	}
+
+	response.SendJson(ctx, response.Ok, "", result)
 }
 
 func (c *controller) Register(ctx *gin.Context) {

@@ -2,7 +2,12 @@ package domain
 
 type PayloadRegister struct {
 	EmailName string `json:"emailName" validate:"required,email"`
-	Password  string `json:"password" validate:"required,min=5"`
+	Password  string `json:"password" validate:"required"`
+}
+
+type PayloadLogin struct {
+	EmailName string `json:"emailName" validate:"required,email"`
+	Password  string `json:"password" validate:"required"`
 }
 
 type PermissionPolicyUserVm struct {

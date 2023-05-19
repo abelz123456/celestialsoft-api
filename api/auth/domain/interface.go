@@ -14,8 +14,10 @@ type Controller interface {
 
 type Service interface {
 	Register(ctx context.Context, data PayloadRegister) (*entity.PermissionPolicyUser, error)
+	Login(ctx context.Context, data PayloadLogin) (*entity.PermissionPolicyUser, error)
 }
 
 type Repository interface {
 	Save(ctx context.Context, data entity.PermissionPolicyUser) (*entity.PermissionPolicyUser, error)
+	GetOneByEmail(ctx context.Context, email string) (*entity.PermissionPolicyUser, error)
 }
