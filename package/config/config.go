@@ -34,11 +34,19 @@ func optimizeConfig(cfg *Config) {
 		cfg.AppEnv = "development"
 	}
 
-	if cfg.DevelopmentPort == "" {
+	if cfg.DevelopmentPort == "" || cfg.AppEnv != "development" {
 		cfg.DevelopmentPort = "3000"
+	}
+
+	if cfg.AppScheme == "" || (cfg.AppScheme != "http" && cfg.AppScheme != "https") {
+		cfg.AppScheme = "http"
 	}
 
 	if !strings.HasPrefix(cfg.DevelopmentPort, ":") {
 		cfg.DevelopmentPort = fmt.Sprintf(":%s", cfg.DevelopmentPort)
+	}
+
+	for i, host := range cfg.TrustedProxies {
+		cfg.TrustedProxies[i] = strings.TrimSpace(host)
 	}
 }

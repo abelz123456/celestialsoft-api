@@ -1,5 +1,10 @@
 DIR = ./...
 
+run:
+	@echo "> swag init"
+	@swag init
+	@echo "> air"
+	@air
 
 runtest:
 	@echo "> go test -v -coverprofile cover.out $(DIR)"

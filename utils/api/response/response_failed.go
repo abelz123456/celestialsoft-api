@@ -16,7 +16,7 @@ const (
 	ErrForm1Forbidden          ApiResponse = "40300"
 )
 
-var failedResponseMap = map[ApiResponse]responseProperties{
+var failedResponseMap = map[ApiResponse]ResponseProperties{
 	ErrBadRequest: {
 		ResultCode: string(ErrBadRequest),
 		HttpStatus: http.StatusBadRequest,

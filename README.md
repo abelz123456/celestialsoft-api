@@ -67,7 +67,7 @@
     |-- <a target="_blank" href="test/mockdata">mockdata</a>: package and dummy data for testing needs
         |- <a target="_blank" href="test/mockdata/database.go">database.go</a>
         |- <a target="_blank" href="test/mockdata/manager.go">manager.go</a>
-        |- <a target="_blank" href="test/mockdata/permission_policy_user.go">permission_policy_user.go</a>:
+        |- <a target="_blank" href="test/mockdata/permission_policy_user.go">permission_policy_user.go</a>
     |- <a target="_blank" href="test/coverage.sh">coverage.sh</a>
     |- <a target="_blank" href="test/run.sh">run.sh</a>
 |-- <a target="_blank" href="utils/">utils</a>: utility to use this app

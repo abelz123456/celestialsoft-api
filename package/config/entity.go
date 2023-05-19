@@ -7,6 +7,10 @@ type Config struct {
 	DevelopmentPort string `mapstructure:"DEVELOPMENT_PORT"`
 	SecretKey       string `mapstructure:"SECRET_KEY"`
 	JwtExpiredTime  int    `mapstructure:"JWT_EXPIRED_TIME"`
+	AppHost         string `mapstructure:"APP_HOST"`
+	AppScheme       string `mapstructure:"APP_SCHEME"`
+
+	TrustedProxies []string `mapstructure:"TRUSTED_PROXIES"`
 
 	DBUsed string `mapstructure:"DB_USED"` // mysql | postgres | mongodb
 
