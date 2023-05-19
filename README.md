@@ -76,7 +76,7 @@
         |-- <a target="_blank" href="utils/api/response/">response</a>: packages to make it easy to deliver api response content
             |- <a target="_blank" href="utils/api/response/response_failed.go">response_failed.go</a>
             |- <a target="_blank" href="utils/api/response/response_success.go">response_success.go</a>
-            |- <a target="_blank" href="utils/api/response/response.go">response.go</a>
+            |- <a target="_blank" href="utils/api/response/response_new.go">response_new.go</a>
     |-- <a target="_blank" href="utils/helpers/">helpers</a>: helper package for applications
         |- <a target="_blank" href="utils/helpers/formatter.go">formatter.go</a>
         |- <a target="_blank" href="utils/helpers/jwt.go">jwt.go</a>
