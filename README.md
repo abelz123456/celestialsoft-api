@@ -32,7 +32,7 @@ make migration
 
 
 ### Running Go test
-###### Using shell script
+##### Using shell script
 Run testing oly
 ```sh
 test/run.sh
@@ -57,3 +57,42 @@ Example: run test for directory api
 ```sh
 make runtest DIR=./api/...
 ```
+
+<hr>
+## Project Architecture
+
+<pre style="font-size: 15px; font-weigt: bold;">
+-- <a target="_blank" href="api/">api</a>
+-- <a target="_blank" href="cmd/">cmd</a>
+-- <a target="_blank" href="entity/">entity</a>
+-- <a target="_blank" href="package/">package</a>
+-- <a target="_blank" href="routes/">routes</a>
+-- <a target="_blank" href="test/">test</a>
+-- <a target="_blank" href="utils/">utils</a>
+- <a target="_blank" href="main.go">main.go</a>
+- <a target="_blank" href="base.env.go">base.env.go</a>
+</pre>
+
+## Folder 1
+
+Deskripsi Folder 1.
+
+### Subfolder 1.1
+
+Deskripsi Subfolder 1.1.
+
+### Subfolder 1.2
+
+Deskripsi Subfolder 1.2.
+
+## Folder 2
+
+Deskripsi Folder 2.
+
+### Subfolder 2.1
+
+Deskripsi Subfolder 2.1.
+
+### Subfolder 2.2
+
+Deskripsi Subfolder 2.2.
