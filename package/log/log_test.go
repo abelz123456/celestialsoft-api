@@ -132,3 +132,89 @@ func TestErrorNoMessage(t *testing.T) {
 	expectedOutput := `level=error msg="Error: test error"`
 	assert.Contains(t, mockLogger.GetOutput(), expectedOutput)
 }
+
+func TestPanic(t *testing.T) {
+	// Create a mock logger
+	mockLogger := &MockLogger{}
+
+	// Create a log object with the mock logger
+	log := &option{
+		logger: logrus.New(),
+	}
+	log.logger.Out = mockLogger
+
+	err := errors.New("test error")
+	expectedOutput := `level=panic msg="This is an error message | Error: test error"`
+
+	// Call the Save method and capture the panic
+	defer func() {
+		if r := recover(); r != nil {
+			assert.Contains(t, mockLogger.GetOutput(), expectedOutput)
+		}
+	}()
+
+	// Call the Save method, which will panic
+	log.Panic(err, "This is an error message", nil)
+}
+
+func TestPanicNoMessage(t *testing.T) {
+	// Create a mock logger
+	mockLogger := &MockLogger{}
+
+	// Create a log object with the mock logger
+	log := &option{
+		logger: logrus.New(),
+	}
+	log.logger.Out = mockLogger
+
+	err := errors.New("test error")
+	expectedOutput := `level=panic msg="Error: test error"`
+
+	// Call the Save method and capture the panic
+	defer func() {
+		if r := recover(); r != nil {
+			assert.Contains(t, mockLogger.GetOutput(), expectedOutput)
+		}
+	}()
+
+	// Call the Save method, which will panic
+	log.Panic(err, "", nil)
+}
+
+func TestPanicOnError(t *testing.T) {
+	// Create a mock logger
+	mockLogger := &MockLogger{}
+
+	// Create a log object with the mock logger
+	log := &option{
+		logger: logrus.New(),
+	}
+	log.logger.Out = mockLogger
+
+	err := errors.New("test error")
+	expectedOutput := `level=panic msg="Error: test error"`
+
+	// Call the Save method and capture the panic
+	defer func() {
+		if r := recover(); r != nil {
+			assert.Contains(t, mockLogger.GetOutput(), expectedOutput)
+		}
+	}()
+
+	// Call the Save method, which will panic
+	log.PanicOnError(err, "", nil)
+}
+
+func TestPanicOnErrorWithNoError(t *testing.T) {
+	// Create a mock logger
+	mockLogger := &MockLogger{}
+
+	// Create a log object with the mock logger
+	log := &option{
+		logger: logrus.New(),
+	}
+	log.logger.Out = mockLogger
+
+	// Call the Save method, which will panic
+	log.PanicOnError(nil, "", nil)
+}

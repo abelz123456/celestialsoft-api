@@ -18,4 +18,5 @@ func LoadRoute(mgr manager.Manager) {
 	})
 
 	api.NewAuthApi(router.Group("/auth"), mgr)
+	api.NewBankApi(router.Group("/bank"), mgr)
 }

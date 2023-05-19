@@ -3,10 +3,17 @@ package response
 import "net/http"
 
 const (
-	ErrBadRequest     ApiResponse = "40000"
-	ErrInternalServer ApiResponse = "40001"
-	ErrFailedRegister ApiResponse = "40002"
-	ErrForm1Forbidden ApiResponse = "40300"
+	ErrBadRequest              ApiResponse = "40000"
+	ErrInternalServer          ApiResponse = "40001"
+	ErrFailedRegister          ApiResponse = "40002"
+	ErrFailedGetBankCollection ApiResponse = "40003"
+	ErrFailedCreateBank        ApiResponse = "40004"
+	ErrFailedRemoveBank        ApiResponse = "40005"
+	ErrFailedGetBank           ApiResponse = "40006"
+	ErrFailedUpdateBank        ApiResponse = "40007"
+	ErrFailedLogin             ApiResponse = "40100"
+	ErrUnauthorized            ApiResponse = "401001"
+	ErrForm1Forbidden          ApiResponse = "40300"
 )
 
 var failedResponseMap = map[ApiResponse]responseProperties{
@@ -24,6 +31,41 @@ var failedResponseMap = map[ApiResponse]responseProperties{
 		ResultCode: string(ErrFailedRegister),
 		HttpStatus: http.StatusBadRequest,
 		Message:    "Error handle register",
+	},
+	ErrFailedGetBankCollection: {
+		ResultCode: string(ErrFailedGetBankCollection),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle get bank collection",
+	},
+	ErrFailedCreateBank: {
+		ResultCode: string(ErrFailedCreateBank),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle create bank",
+	},
+	ErrFailedRemoveBank: {
+		ResultCode: string(ErrFailedRemoveBank),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle remove bank",
+	},
+	ErrFailedGetBank: {
+		ResultCode: string(ErrFailedGetBank),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle get bank",
+	},
+	ErrFailedUpdateBank: {
+		ResultCode: string(ErrFailedUpdateBank),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle update bank",
+	},
+	ErrFailedLogin: {
+		ResultCode: string(ErrFailedLogin),
+		HttpStatus: http.StatusUnauthorized,
+		Message:    "Error handle login",
+	},
+	ErrUnauthorized: {
+		ResultCode: string(ErrUnauthorized),
+		HttpStatus: http.StatusUnauthorized,
+		Message:    "Invalid Auth Token",
 	},
 	ErrForm1Forbidden: {
 		ResultCode: string(ErrForm1Forbidden),
