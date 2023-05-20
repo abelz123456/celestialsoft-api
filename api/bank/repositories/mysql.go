@@ -15,20 +15,16 @@ type mysql struct {
 }
 
 func (r *mysql) GetCollection(ctx context.Context) ([]entity.Bank, error) {
-	var result []entity.Bank
+	var results = make([]entity.Bank, 0)
 	stmt := r.Sql.WithContext(ctx).
-		Find(&result)
+		Find(&results)
 
 	if stmt.Error != nil {
 		r.Log.Error(stmt.Error, "mysql.GetCollection Exception", nil)
 		return nil, stmt.Error
 	}
 
-	if stmt.RowsAffected > 0 {
-		return result, nil
-	}
-
-	return nil, nil
+	return results, nil
 }
 
 func (r *mysql) Create(ctx context.Context, data entity.Bank) (*entity.Bank, error) {

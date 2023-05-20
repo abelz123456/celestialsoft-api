@@ -12,6 +12,7 @@ func Init(path string) Config {
 	logger := log.NewLog()
 	var cfg Config
 
+	fmt.Println("PATH", path)
 	viper.AddConfigPath(path)
 	viper.SetConfigName("base")
 	viper.SetConfigType("env")

@@ -60,7 +60,7 @@ func NewDatabase(cfg config.Config) (_ *Database, err error) {
 
 	case PostgreSQL:
 		db.Address = fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", cfg.PostgresqlDBUser, cfg.PostgreqslDBPass, cfg.PostgresqlDBHost, cfg.PostgresqlDBPort, cfg.PostgresqlDBName)
-		db.ConnectionInfo = fmt.Sprintf("postgresql(%s:%s/%s)", cfg.MysqlDBHost, cfg.MysqlDBPort, cfg.MysqlDBName)
+		db.ConnectionInfo = fmt.Sprintf("postgresql(%s:%s/%s)", cfg.PostgresqlDBHost, cfg.PostgresqlDBPort, cfg.PostgresqlDBName)
 
 		db.Sql, err = gorm.Open(postgres.Open(db.Address))
 		if err != nil {
