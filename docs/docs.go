@@ -18,14 +18,13 @@ const docTemplate = `{
     "paths": {
         "/auth/login": {
             "post": {
-                "description": "Basic JSON Authentication",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Authentication"
                 ],
-                "summary": "User Authentication API",
+                "summary": "User Authentication",
                 "parameters": [
                     {
                         "description": "Login info",
@@ -49,14 +48,13 @@ const docTemplate = `{
         },
         "/auth/register": {
             "post": {
-                "description": "Basic JSON Authentication",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Authentication"
                 ],
-                "summary": "User Authentication API",
+                "summary": "User Registration",
                 "parameters": [
                     {
                         "description": "Login info",
@@ -396,7 +394,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "v1.0",
-	Host:             "localhost:8001",
+	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "Celestialsoftware API",

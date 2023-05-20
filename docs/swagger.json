@@ -5,19 +5,17 @@
         "contact": {},
         "version": "v1.0"
     },
-    "host": "localhost:8001",
     "basePath": "/",
     "paths": {
         "/auth/login": {
             "post": {
-                "description": "Basic JSON Authentication",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Authentication"
                 ],
-                "summary": "User Authentication API",
+                "summary": "User Authentication",
                 "parameters": [
                     {
                         "description": "Login info",
@@ -41,14 +39,13 @@
         },
         "/auth/register": {
             "post": {
-                "description": "Basic JSON Authentication",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "Authentication"
                 ],
-                "summary": "User Authentication API",
+                "summary": "User Registration",
                 "parameters": [
                     {
                         "description": "Login info",

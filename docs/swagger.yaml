@@ -51,7 +51,6 @@ definitions:
       resultCode:
         type: string
     type: object
-host: localhost:8001
 info:
   contact: {}
   title: Celestialsoftware API
@@ -59,7 +58,6 @@ info:
 paths:
   /auth/login:
     post:
-      description: Basic JSON Authentication
       parameters:
       - description: Login info
         in: body
@@ -74,12 +72,11 @@ paths:
           description: Unauthorized
           schema:
             $ref: '#/definitions/response.ResponseProperties'
-      summary: User Authentication API
+      summary: User Authentication
       tags:
       - Authentication
   /auth/register:
     post:
-      description: Basic JSON Authentication
       parameters:
       - description: Login info
         in: body
@@ -98,7 +95,7 @@ paths:
           description: Forbidden
           schema:
             $ref: '#/definitions/response.ResponseProperties'
-      summary: User Authentication API
+      summary: User Registration
       tags:
       - Authentication
   /bank:

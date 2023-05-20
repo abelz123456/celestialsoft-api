@@ -24,7 +24,7 @@ type Config struct {
 	PostgresqlDBPort string `mapstructure:"POSTGRESQL_DB_PORT"`
 	PostgresqlDBUser string `mapstructure:"POSTGRESQL_DB_USER"`
 	PostgreqslDBPass string `mapstructure:"POSTGRESQL_DB_PASS"`
-	PostgresqlDBName string `'mapstructure:"POSTGRESQL_DB_NAME"`
+	PostgresqlDBName string `mapstructure:"POSTGRESQL_DB_NAME"`
 
 	MongoDBHost string `mapstructure:"MONGO_DB_HOST"`
 	MongoDBPort int    `mapstructure:"MONGO_DB_PORT"`
