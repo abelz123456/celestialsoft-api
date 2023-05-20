@@ -42,9 +42,5 @@ func (r *postgresql) GetOneByEmail(ctx context.Context, email string) (*entity.P
 		return nil, stmt.Error
 	}
 
-	if stmt.RowsAffected > 0 {
-		return &result, nil
-	}
-
-	return nil, nil
+	return &result, nil
 }
