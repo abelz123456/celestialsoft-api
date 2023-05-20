@@ -36,12 +36,7 @@ func (o *option) CreateToken(oid string) string {
 			"exp": time.Now().Add(time.Minute * time.Duration(o.exp)).Unix(),
 		})
 
-	token, err := t.SignedString([]byte(o.secretKey))
-	if err != nil {
-		o.logger.Warning("Failed NewJwtHelper.CreateToken", err, nil)
-		return ""
-	}
-
+	token, _ := t.SignedString([]byte(o.secretKey))
 	return token
 }
 
