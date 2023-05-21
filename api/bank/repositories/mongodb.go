@@ -27,6 +27,7 @@ func (r *mongodb) GetCollection(ctx context.Context) ([]entity.Bank, error) {
 	for cursor.Next(ctx) {
 		var result = new(entity.Bank)
 		if err := cursor.Decode(&result); err != nil {
+			r.Log.Error(err, "mongodb.GetCollection Exception", nil)
 			cursor.Close(ctx)
 			return nil, err
 		}
