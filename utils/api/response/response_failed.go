@@ -11,6 +11,7 @@ const (
 	ErrFailedRemoveBank        ApiResponse = "40005"
 	ErrFailedGetBank           ApiResponse = "40006"
 	ErrFailedUpdateBank        ApiResponse = "40007"
+	ErrFailedUploadFile        ApiResponse = "40008"
 	ErrFailedLogin             ApiResponse = "40100"
 	ErrUnauthorized            ApiResponse = "401001"
 	ErrForm1Forbidden          ApiResponse = "40300"
@@ -56,6 +57,11 @@ var failedResponseMap = map[ApiResponse]ResponseProperties{
 		ResultCode: string(ErrFailedUpdateBank),
 		HttpStatus: http.StatusBadRequest,
 		Message:    "Error handle update bank",
+	},
+	ErrFailedUploadFile: {
+		ResultCode: string(ErrFailedUploadFile),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle upload file",
 	},
 	ErrFailedLogin: {
 		ResultCode: string(ErrFailedLogin),

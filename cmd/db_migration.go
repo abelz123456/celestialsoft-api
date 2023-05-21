@@ -10,6 +10,7 @@ import (
 var registeredModels []interface{} = []interface{}{
 	entity.Bank{},
 	entity.PermissionPolicyUser{},
+	entity.LocalFile{},
 }
 
 func main() {

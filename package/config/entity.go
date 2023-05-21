@@ -9,6 +9,7 @@ type Config struct {
 	JwtExpiredTime  int    `mapstructure:"JWT_EXPIRED_TIME"`
 	AppHost         string `mapstructure:"APP_HOST"`
 	AppScheme       string `mapstructure:"APP_SCHEME"`
+	StaticFilePath  string `mapstructure:"STATIC_FILE_PATH"`
 
 	TrustedProxies []string `mapstructure:"TRUSTED_PROXIES"`
 

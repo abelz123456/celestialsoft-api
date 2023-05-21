@@ -39,6 +39,10 @@ func optimizeConfig(cfg *Config) {
 		cfg.DevelopmentPort = "3000"
 	}
 
+	if cfg.StaticFilePath == "" {
+		cfg.StaticFilePath = "public"
+	}
+
 	if cfg.AppScheme == "" || (cfg.AppScheme != "http" && cfg.AppScheme != "https") {
 		cfg.AppScheme = "http"
 	}
