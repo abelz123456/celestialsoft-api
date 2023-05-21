@@ -251,4 +251,101 @@ paths:
       summary: Update Bank
       tags:
       - Bank
+  /file:
+    get:
+      description: Get File Collection
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get File Collection
+      tags:
+      - File
+    post:
+      description: Upload new File
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: File to upload
+        in: formData
+        name: content
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses: {}
+      summary: Upload new File
+      tags:
+      - File
+  /file/{uid}:
+    delete:
+      description: Delete File
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: uid of File
+        in: path
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete File
+      tags:
+      - File
+    get:
+      description: Get File Info
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: uid of File
+        in: path
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get File Info
+      tags:
+      - File
+    put:
+      description: Change File
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: uid of File
+        in: path
+        name: uid
+        required: true
+        type: string
+      - description: File to upload
+        in: formData
+        name: content
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses: {}
+      summary: Change File
+      tags:
+      - File
 swagger: "2.0"

@@ -31,3 +31,6 @@ Icon?
 cover.html
 log.txt
 .tmp/
+
+public/*
+!public/.gitkeep
