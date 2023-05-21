@@ -28,15 +28,15 @@ func (r *mysql) GetCollection(ctx context.Context) ([]entity.Bank, error) {
 }
 
 func (r *mysql) Create(ctx context.Context, data entity.Bank) (*entity.Bank, error) {
-	stmt := r.Sql.WithContext(ctx).
-		Create(&data)
+	tx := r.Sql.WithContext(ctx).Begin()
 
-	if stmt.Error != nil {
-		stmt.Rollback()
-		r.Log.Error(stmt.Error, "mysql.Create Exception", nil)
-		return nil, stmt.Error
+	if err := tx.Create(&data).Error; err != nil {
+		tx.Rollback()
+		r.Log.Error(err, "mysql.Create Exception", nil)
+		return nil, err
 	}
 
+	tx.Commit()
 	return &data, nil
 }
 
@@ -55,11 +55,7 @@ func (r *mysql) GetOneByCode(ctx context.Context, code string) (*entity.Bank, er
 		return nil, stmt.Error
 	}
 
-	if stmt.RowsAffected > 0 {
-		return &result, nil
-	}
-
-	return nil, nil
+	return &result, nil
 }
 
 func (r *mysql) GetOneByOid(ctx context.Context, oid string) (*entity.Bank, error) {
@@ -77,35 +73,38 @@ func (r *mysql) GetOneByOid(ctx context.Context, oid string) (*entity.Bank, erro
 		return nil, stmt.Error
 	}
 
-	if stmt.RowsAffected > 0 {
-		return &result, nil
-	}
+	return &result, nil
 
-	return nil, nil
 }
 
 func (r *mysql) UpdateOne(ctx context.Context, bank entity.Bank, newData entity.Bank) (*entity.Bank, error) {
-	stmt := r.Sql.WithContext(ctx).
+	tx := r.Sql.WithContext(ctx).Begin()
+
+	stmt := tx.Model(&entity.Bank{}).
 		Where("oid = ?", bank.Oid).
-		Updates(&newData)
+		Updates(map[string]interface{}{"bankName": newData.BankName})
 
 	if stmt.Error != nil {
-		stmt.Rollback()
+		tx.Rollback()
 		return nil, stmt.Error
 	}
 
+	tx.Commit()
 	return r.GetOneByOid(ctx, bank.Oid)
 }
 
 func (r *mysql) Delete(ctx context.Context, bank entity.Bank) error {
-	stmt := r.Sql.WithContext(ctx).
-		Where("oid = ?", bank.Oid).
-		Delete(&entity.Bank{})
+	tx := r.Sql.WithContext(ctx).Begin()
+
+	stmt := tx.Model(&entity.Bank{}).
+		Delete(bank)
 
 	if stmt.Error != nil {
+		tx.Rollback()
 		r.Log.Error(stmt.Error, "mysql.Delete Exception", nil)
 		return stmt.Error
 	}
 
+	tx.Commit()
 	return nil
 }

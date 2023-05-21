@@ -217,7 +217,7 @@ const docTemplate = `{
                 "tags": [
                     "Bank"
                 ],
-                "summary": "Detail Bank",
+                "summary": "Delete Bank",
                 "parameters": [
                     {
                         "type": "string",

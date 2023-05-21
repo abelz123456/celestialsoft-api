@@ -61,7 +61,7 @@ func TestMongoDB_GetOneByEmail(t *testing.T) {
 		testData := mockdata.PermissionPolicyUserMock[0]
 
 		mockResponses := []primitive.D{
-			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{"emailName", testData.EmailName}, {"oid", testData.Oid}}),
+			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{Key: "emailName", Value: testData.EmailName}, {Key: "oid", Value: testData.Oid}}),
 			mtest.CreateSuccessResponse(),
 		}
 		mt.AddMockResponses(mockResponses...)
@@ -92,7 +92,7 @@ func TestMongoDB_GetOneByEmail(t *testing.T) {
 		testData := mockdata.PermissionPolicyUserMock[0]
 
 		mockResponses := []primitive.D{
-			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{"emailName", 123456}, {"oid", testData.Oid}}),
+			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{Key: "emailName", Value: 123456}, {Key: "oid", Value: testData.Oid}}),
 			mtest.CreateSuccessResponse(),
 		}
 		mt.AddMockResponses(mockResponses...)
@@ -120,7 +120,7 @@ func TestMongoDB_GetOneByEmail(t *testing.T) {
 		testData := mockdata.PermissionPolicyUserMock[0]
 
 		mockResponses := []primitive.D{
-			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{"emailName", testData.EmailName}}),
+			mtest.CreateCursorResponse(1, "test.permissionPolicyUser", mtest.FirstBatch, bson.D{{Key: "emailName", Value: testData.EmailName}}),
 			mtest.CreateSuccessResponse(),
 		}
 		mt.AddMockResponses(mockResponses...)
