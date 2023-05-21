@@ -92,7 +92,7 @@ func (c *controller) GetOne(ctx *gin.Context) {
 	}
 
 	if result == nil {
-		response.SendJson(ctx, response.ErrFailedGetBank, "Bank data not found", map[string]string{"oid": oid, "error": err.Error()})
+		response.SendJson(ctx, response.ErrFailedGetBank, "Bank data not found", map[string]string{"oid": oid, "error": "not Found"})
 		return
 	}
 

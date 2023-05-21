@@ -182,7 +182,7 @@ paths:
           description: Authentication Error
           schema:
             $ref: '#/definitions/response.ResponseProperties'
-      summary: Detail Bank
+      summary: Delete Bank
       tags:
       - Bank
     get:
