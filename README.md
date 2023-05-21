@@ -32,6 +32,19 @@
             |- <a target="_blank" href="api/bank/repositories/postgresql.go">postgresql.go</a>
         |-- <a target="_blank" href="api/bank/services">services</a>: service package that can be used for the bank api
             |- <a target="_blank" href="api/bank/services/bank.go">bank.go</a>
+    |-- <a target="_blank" href="api/file">file</a>
+        |-- <a target="_blank" href="api/file/controllers">controllers</a>
+            |- <a target="_blank" href="api/file/controllers/file.go">file.go</a>
+        |-- <a target="_blank" href="api/file/domain">domain</a>
+            |- <a target="_blank" href="api/file/domain/entity.go">entity.go</a>
+            |- <a target="_blank" href="api/file/domain/interface.go">interface.go</a>
+        |-- <a target="_blank" href="api/file/repositories">repositories</a>
+            |- <a target="_blank" href="api/file/repositories/file.go">file.go</a>
+            |- <a target="_blank" href="api/file/repositories/mongodb.go">mongodb.go</a>
+            |- <a target="_blank" href="api/file/repositories/mysql.go">mysql.go</a>
+            |- <a target="_blank" href="api/file/repositories/postgresql.go">postgresql.go</a>
+        |-- <a target="_blank" href="api/file/services">services</a>
+            |- <a target="_blank" href="api/file/services/file.go">file.go</a>
 |-- <a target="_blank" href="cmd/">cmd</a>: go command which can be used to support development
     |- <a target="_blank" href="cmd/db_migration.go">db_migration.go</a>
 |-- <a target="_blank" href="entity/">entity</a>: usable models and entities
@@ -62,10 +75,13 @@
     |-- <a target="_blank" href="routes/api">api</a>: router package to define the route for each api
         |- <a target="_blank" href="routes/api/auth.go">auth.go</a>
         |- <a target="_blank" href="routes/api/bank.go">bank.go</a>
+        |- <a target="_blank" href="routes/api/file.go">file.go</a>
     |- <a target="_blank" href="routes/routes.go">routes.go</a>
 |-- <a target="_blank" href="test/">test</a>: golang testing needs
     |-- <a target="_blank" href="test/mockdata">mockdata</a>: package and dummy data for testing needs
+        |- <a target="_blank" href="test/mockdata/bank.go">bank.go</a>
         |- <a target="_blank" href="test/mockdata/database.go">database.go</a>
+        |- <a target="_blank" href="test/mockdata/local_file.go">local_file.go</a>
         |- <a target="_blank" href="test/mockdata/manager.go">manager.go</a>
         |- <a target="_blank" href="test/mockdata/permission_policy_user.go">permission_policy_user.go</a>
     |- <a target="_blank" href="test/coverage.sh">coverage.sh</a>
