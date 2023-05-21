@@ -42,12 +42,7 @@ func (r *postgresql) SaveLocalStorage(ctx context.Context, fileHeader multipart.
 }
 
 func (r *postgresql) DeleteLocalStorage(ctx context.Context, filePath string) error {
-	err := os.Remove(filePath)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return os.Remove(filePath)
 }
 
 func (r *postgresql) Save(ctx context.Context, fileData entity.LocalFile) error {

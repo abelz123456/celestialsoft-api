@@ -42,12 +42,7 @@ func (r *mysql) SaveLocalStorage(ctx context.Context, fileHeader multipart.FileH
 }
 
 func (r *mysql) DeleteLocalStorage(ctx context.Context, filePath string) error {
-	err := os.Remove(filePath)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return os.Remove(filePath)
 }
 
 func (r *mysql) Save(ctx context.Context, fileData entity.LocalFile) error {

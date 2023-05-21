@@ -43,12 +43,7 @@ func (r *mongodb) SaveLocalStorage(ctx context.Context, fileHeader multipart.Fil
 }
 
 func (r *mongodb) DeleteLocalStorage(ctx context.Context, filePath string) error {
-	err := os.Remove(filePath)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return os.Remove(filePath)
 }
 
 func (r *mongodb) Save(ctx context.Context, fileData entity.LocalFile) error {
