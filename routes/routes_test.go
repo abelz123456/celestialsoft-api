@@ -1,11 +1,10 @@
 package routes
 
 import (
-	"context"
 	"io"
 	"net/http"
+	"net/http/httptest"
 	"testing"
-	"time"
 
 	"github.com/abelz123456/celestial-api/package/database"
 	"github.com/abelz123456/celestial-api/test/mockdata"
@@ -15,35 +14,28 @@ import (
 func TestLoadRoute(t *testing.T) {
 	// Create a new manager instance.
 	mgr := mockdata.NewFakeManager(t, database.MySQL)
+	mgr.Config.AppEnv = "testing"
+	mgr.Config.StaticFilePath = "public"
 
-	// Create a new HTTP server.
-	srv := mgr.Server.HttpServer
+	t.Run("Ping server", func(t *testing.T) {
+		// Create an HTTP test server with the mock handler
+		server := httptest.NewServer(mgr.Server.Engine)
+		defer server.Close()
 
-	// Start the server.
-	go func() {
 		LoadRoute(mgr)
-		srv.ListenAndServe()
-	}()
 
-	// Create a new request.
-	req, err := http.NewRequest("GET", "http://127.0.0.1:3030/ping", nil)
-	assert.Nil(t, err)
+		// Send a request to the mock server
+		resp, err := http.Get(server.URL + "/ping")
+		assert.NoError(t, err)
+		defer resp.Body.Close()
 
-	// Make the request.
-	response, err := http.DefaultClient.Do(req)
-	assert.Nil(t, err)
+		// Assert that the response is successful.
+		assert.Equal(t, resp.StatusCode, http.StatusOK)
 
-	// Assert that the response is successful.
-	assert.Equal(t, response.StatusCode, http.StatusOK)
-
-	// Assert that the response body is "pong".
-	ioRead, err := io.ReadAll(response.Body)
-	assert.NoError(t, err)
-	assert.Equal(t, string(ioRead), "pong")
-
-	// Shutdown the server gracefully.
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	assert.NoError(t, srv.Shutdown(ctx))
-
+		// // Assert that the response body is "pong".
+		ioRead, err := io.ReadAll(resp.Body)
+		assert.NoError(t, err)
+		assert.Equal(t, string(ioRead), "pong")
+		server.Close()
+	})
 }

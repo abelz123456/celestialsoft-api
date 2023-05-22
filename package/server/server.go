@@ -23,9 +23,6 @@ func Init(cfg config.Config) (*Server, error) {
 
 	engine.MaxMultipartMemory = 8 << 20 // maximum file 8 MiB
 
-	// set static route
-	engine.Static("/"+cfg.StaticFilePath, "./"+cfg.StaticFilePath)
-
 	// Load Middleware
 	engine.Use(middleware.CORSMiddleware)
 	engine.Use(gin.Logger())
