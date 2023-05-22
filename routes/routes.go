@@ -22,4 +22,7 @@ func LoadRoute(mgr manager.Manager) {
 	api.NewFileApi(router.Group("/file"), mgr)
 	api.NewMailApi(router.Group("/mail"), mgr)
 	api.NewRajaongkirApi(router.Group("/rajaongkir"), mgr)
+
+	// set static route
+	router.Static("/"+mgr.Config.StaticFilePath, "./"+mgr.Config.StaticFilePath)
 }
