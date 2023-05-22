@@ -19,10 +19,12 @@ _test
 .DS_Store
 Icon?
 
-# Dependency directories
+# Dependency directories and env
 /bin
 /pkg
 /vendor
+
+local.env
 
 # Code Editor
 .vscode/

@@ -32,4 +32,7 @@ type Config struct {
 	MongoDBUser string `mapstructure:"MONGO_DB_USER"`
 	MongoDBPass string `mapstructure:"MONGO_DB_PASS"`
 	MongoDBName string `mapstructure:"MONGO_DB_NAME"`
+
+	RajaongkirApiKey string `mapstructure:"RAJAONGKIR_API_KEY"`
+	RajaongkirApiUrl string `mapstructure:"RAJAONGKIR_API_URL"`
 }

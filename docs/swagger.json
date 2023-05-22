@@ -440,9 +440,135 @@
                 ],
                 "responses": {}
             }
+        },
+        "/rajaongkir": {
+            "get": {
+                "description": "Get Rajaongkir Cost histories",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Rajaongkir"
+                ],
+                "summary": "Get Rajaongkir Cost histories",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/rajaongkir/cost": {
+            "post": {
+                "description": "Get delivery cost with Rajaongkir",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Rajaongkir"
+                ],
+                "summary": "Get delivery cost with Rajaongkir",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Rajaongkir cost data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.CostInfoPayload"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/rajaongkir/province": {
+            "get": {
+                "description": "Get Rajaongkir Province data",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Rajaongkir"
+                ],
+                "summary": "Get Rajaongkir Province data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/rajaongkir/province/{id}/city": {
+            "get": {
+                "description": "Get Rajaongkir City data by Province ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Rajaongkir"
+                ],
+                "summary": "Get Rajaongkir City data by Province ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "number of Province ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
         }
     },
     "definitions": {
+        "domain.CostInfoPayload": {
+            "type": "object",
+            "required": [
+                "destination",
+                "origin",
+                "weight"
+            ],
+            "properties": {
+                "courier": {
+                    "type": "string"
+                },
+                "destination": {
+                    "type": "integer"
+                },
+                "origin": {
+                    "type": "integer"
+                },
+                "weight": {
+                    "type": "number"
+                }
+            }
+        },
         "domain.CreateBankDto": {
             "type": "object",
             "required": [

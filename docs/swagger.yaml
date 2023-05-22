@@ -1,5 +1,20 @@
 basePath: /
 definitions:
+  domain.CostInfoPayload:
+    properties:
+      courier:
+        type: string
+      destination:
+        type: integer
+      origin:
+        type: integer
+      weight:
+        type: number
+    required:
+    - destination
+    - origin
+    - weight
+    type: object
   domain.CreateBankDto:
     properties:
       bankCode:
@@ -348,4 +363,75 @@ paths:
       summary: Change File
       tags:
       - File
+  /rajaongkir:
+    get:
+      description: Get Rajaongkir Cost histories
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Rajaongkir Cost histories
+      tags:
+      - Rajaongkir
+  /rajaongkir/cost:
+    post:
+      description: Get delivery cost with Rajaongkir
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Rajaongkir cost data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CostInfoPayload'
+      produces:
+      - application/json
+      responses: {}
+      summary: Get delivery cost with Rajaongkir
+      tags:
+      - Rajaongkir
+  /rajaongkir/province:
+    get:
+      description: Get Rajaongkir Province data
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Rajaongkir Province data
+      tags:
+      - Rajaongkir
+  /rajaongkir/province/{id}/city:
+    get:
+      description: Get Rajaongkir City data by Province ID
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: number of Province ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Rajaongkir City data by Province ID
+      tags:
+      - Rajaongkir
 swagger: "2.0"

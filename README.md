@@ -33,18 +33,31 @@
         |-- <a target="_blank" href="api/bank/services">services</a>: service package that can be used for the bank api
             |- <a target="_blank" href="api/bank/services/bank.go">bank.go</a>
     |-- <a target="_blank" href="api/file">file</a>
-        |-- <a target="_blank" href="api/file/controllers">controllers</a>
+        |-- <a target="_blank" href="api/file/controllers">controllers</a>: controller package for api file
             |- <a target="_blank" href="api/file/controllers/file.go">file.go</a>
-        |-- <a target="_blank" href="api/file/domain">domain</a>
+        |-- <a target="_blank" href="api/file/domain">domain</a>: interface and entity package for api file domain
             |- <a target="_blank" href="api/file/domain/entity.go">entity.go</a>
             |- <a target="_blank" href="api/file/domain/interface.go">interface.go</a>
-        |-- <a target="_blank" href="api/file/repositories">repositories</a>
+        |-- <a target="_blank" href="api/file/repositories">repositories</a>: repository package that can be used for api file
             |- <a target="_blank" href="api/file/repositories/file.go">file.go</a>
             |- <a target="_blank" href="api/file/repositories/mongodb.go">mongodb.go</a>
             |- <a target="_blank" href="api/file/repositories/mysql.go">mysql.go</a>
             |- <a target="_blank" href="api/file/repositories/postgresql.go">postgresql.go</a>
-        |-- <a target="_blank" href="api/file/services">services</a>
+        |-- <a target="_blank" href="api/file/services">services</a>: service package that can be used for the file api
             |- <a target="_blank" href="api/file/services/file.go">file.go</a>
+    |-- <a target="_blank" href="api/rajaongkir">rajaongkir</a>
+        |-- <a target="_blank" href="api/rajaongkir/controllers">controllers</a>: controller package for api rajaongkir
+            |- <a target="_blank" href="api/rajaongkir/controllers/rajaongkir.go">rajaongkir.go</a>
+        |-- <a target="_blank" href="api/rajaongkir/domain">domain</a>: interface and entity package for api rajaongkir domain
+            |- <a target="_blank" href="api/rajaongkir/domain/entity.go">entity.go</a>
+            |- <a target="_blank" href="api/rajaongkir/domain/interface.go">interface.go</a>
+        |-- <a target="_blank" href="api/rajaongkir/repositories">repositories</a>: repository package that can be used for api rajaongkir
+            |- <a target="_blank" href="api/rajaongkir/repositories/rajaongkir.go">rajaongkir.go</a>
+            |- <a target="_blank" href="api/rajaongkir/repositories/mongodb.go">mongodb.go</a>
+            |- <a target="_blank" href="api/rajaongkir/repositories/mysql.go">mysql.go</a>
+            |- <a target="_blank" href="api/rajaongkir/repositories/postgresql.go">postgresql.go</a>
+        |-- <a target="_blank" href="api/rajaongkir/services">services</a>: service package that can be used for the rajaongkir api
+            |- <a target="_blank" href="api/rajaongkir/services/rajaongkir.go">rajaongkir.go</a>
 |-- <a target="_blank" href="cmd/">cmd</a>: go command which can be used to support development
     |- <a target="_blank" href="cmd/db_migration.go">db_migration.go</a>
 |-- <a target="_blank" href="entity/">entity</a>: usable models and entities
@@ -76,6 +89,7 @@
         |- <a target="_blank" href="routes/api/auth.go">auth.go</a>
         |- <a target="_blank" href="routes/api/bank.go">bank.go</a>
         |- <a target="_blank" href="routes/api/file.go">file.go</a>
+        |- <a target="_blank" href="routes/api/rajaongkir.go">rajaongkir.go</a>
     |- <a target="_blank" href="routes/routes.go">routes.go</a>
 |-- <a target="_blank" href="test/">test</a>: golang testing needs
     |-- <a target="_blank" href="test/mockdata">mockdata</a>: package and dummy data for testing needs
