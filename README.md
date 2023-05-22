@@ -45,6 +45,19 @@
             |- <a target="_blank" href="api/file/repositories/postgresql.go">postgresql.go</a>
         |-- <a target="_blank" href="api/file/services">services</a>: service package that can be used for the file api
             |- <a target="_blank" href="api/file/services/file.go">file.go</a>
+    |-- <a target="_blank" href="api/mail">mail</a>
+        |-- <a target="_blank" href="api/mail/controllers">controllers</a>: controller package for api mail
+            |- <a target="_blank" href="api/mail/controllers/mail.go">mail.go</a>
+        |-- <a target="_blank" href="api/mail/domain">domain</a>: interface and entity package for api mail domain
+            |- <a target="_blank" href="api/mail/domain/entity.go">entity.go</a>
+            |- <a target="_blank" href="api/mail/domain/interface.go">interface.go</a>
+        |-- <a target="_blank" href="api/mail/repositories">repositories</a>: repository package that can be used for api mail
+            |- <a target="_blank" href="api/mail/repositories/mail.go">mail.go</a>
+            |- <a target="_blank" href="api/mail/repositories/mongodb.go">mongodb.go</a>
+            |- <a target="_blank" href="api/mail/repositories/mysql.go">mysql.go</a>
+            |- <a target="_blank" href="api/mail/repositories/postgresql.go">postgresql.go</a>
+        |-- <a target="_blank" href="api/mail/services">services</a>: service package that can be used for the mail api
+            |- <a target="_blank" href="api/mail/services/mail.go">mail.go</a>
     |-- <a target="_blank" href="api/rajaongkir">rajaongkir</a>
         |-- <a target="_blank" href="api/rajaongkir/controllers">controllers</a>: controller package for api rajaongkir
             |- <a target="_blank" href="api/rajaongkir/controllers/rajaongkir.go">rajaongkir.go</a>
@@ -89,6 +102,7 @@
         |- <a target="_blank" href="routes/api/auth.go">auth.go</a>
         |- <a target="_blank" href="routes/api/bank.go">bank.go</a>
         |- <a target="_blank" href="routes/api/file.go">file.go</a>
+        |- <a target="_blank" href="routes/api/mail.go">mail.go</a>
         |- <a target="_blank" href="routes/api/rajaongkir.go">rajaongkir.go</a>
     |- <a target="_blank" href="routes/routes.go">routes.go</a>
 |-- <a target="_blank" href="test/">test</a>: golang testing needs
