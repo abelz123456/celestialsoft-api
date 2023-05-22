@@ -20,4 +20,5 @@ func LoadRoute(mgr manager.Manager) {
 	api.NewAuthApi(router.Group("/auth"), mgr)
 	api.NewBankApi(router.Group("/bank"), mgr)
 	api.NewFileApi(router.Group("/file"), mgr)
+	api.NewRajaongkirApi(router.Group("/rajaongkir"), mgr)
 }

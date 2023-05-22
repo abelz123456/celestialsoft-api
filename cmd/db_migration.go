@@ -11,6 +11,7 @@ var registeredModels []interface{} = []interface{}{
 	entity.Bank{},
 	entity.PermissionPolicyUser{},
 	entity.LocalFile{},
+	entity.Rajaongkir{},
 }
 
 func main() {

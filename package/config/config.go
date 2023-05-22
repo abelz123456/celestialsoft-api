@@ -54,4 +54,8 @@ func optimizeConfig(cfg *Config) {
 	for i, host := range cfg.TrustedProxies {
 		cfg.TrustedProxies[i] = strings.TrimSpace(host)
 	}
+
+	if cfg.RajaongkirApiKey == "" || cfg.RajaongkirApiUrl == "" {
+		log.NewLog().Warning("Please Provide your Rajaongkir API Info", nil, map[string]string{"Url": cfg.RajaongkirApiUrl, "Key": cfg.RajaongkirApiKey})
+	}
 }
