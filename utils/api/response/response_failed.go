@@ -13,6 +13,7 @@ const (
 	ErrFailedUpdateBank        ApiResponse = "40007"
 	ErrFailedUploadFile        ApiResponse = "40008"
 	ErrFailedGetCost           ApiResponse = "40009"
+	ErrFailedSendEmail         ApiResponse = "40010"
 	ErrFailedLogin             ApiResponse = "40100"
 	ErrUnauthorized            ApiResponse = "401001"
 	ErrForm1Forbidden          ApiResponse = "40300"
@@ -68,6 +69,11 @@ var failedResponseMap = map[ApiResponse]ResponseProperties{
 		ResultCode: string(ErrFailedGetCost),
 		HttpStatus: http.StatusBadRequest,
 		Message:    "Error handle get cost info",
+	},
+	ErrFailedSendEmail: {
+		ResultCode: string(ErrFailedSendEmail),
+		HttpStatus: http.StatusBadRequest,
+		Message:    "Error handle send email",
 	},
 	ErrFailedLogin: {
 		ResultCode: string(ErrFailedLogin),

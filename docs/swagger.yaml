@@ -49,6 +49,20 @@ definitions:
     - emailName
     - password
     type: object
+  domain.SendEmailPayload:
+    properties:
+      body:
+        type: string
+      recipient:
+        items:
+          type: string
+        type: array
+      subject:
+        type: string
+    required:
+    - body
+    - subject
+    type: object
   domain.UpdateBankDto:
     properties:
       bankName:
@@ -363,6 +377,61 @@ paths:
       summary: Change File
       tags:
       - File
+  /mail:
+    get:
+      description: Get Email histories
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Email histories
+      tags:
+      - Email
+    post:
+      description: Send Email API
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: Send Email Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/domain.SendEmailPayload'
+      produces:
+      - application/json
+      responses: {}
+      summary: Send Email API
+      tags:
+      - Email
+  /mail/{uid}:
+    get:
+      description: Get Info Email History
+      parameters:
+      - description: With value 'Bearer {authToken}'
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: String of Email History UID
+        in: path
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: Get Info Email History
+      tags:
+      - Email
   /rajaongkir:
     get:
       description: Get Rajaongkir Cost histories

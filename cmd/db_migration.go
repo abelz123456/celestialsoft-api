@@ -12,6 +12,7 @@ var registeredModels []interface{} = []interface{}{
 	entity.PermissionPolicyUser{},
 	entity.LocalFile{},
 	entity.Rajaongkir{},
+	entity.EmailSent{},
 }
 
 func main() {

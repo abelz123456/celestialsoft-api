@@ -450,6 +450,86 @@ const docTemplate = `{
                 "responses": {}
             }
         },
+        "/mail": {
+            "get": {
+                "description": "Get Email histories",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Email"
+                ],
+                "summary": "Get Email histories",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "description": "Send Email API",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Email"
+                ],
+                "summary": "Send Email API",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Send Email Data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.SendEmailPayload"
+                        }
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/mail/{uid}": {
+            "get": {
+                "description": "Get Info Email History",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Email"
+                ],
+                "summary": "Get Info Email History",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "With value 'Bearer {authToken}'",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "String of Email History UID",
+                        "name": "uid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
         "/rajaongkir": {
             "get": {
                 "description": "Get Rajaongkir Cost histories",
@@ -624,6 +704,27 @@ const docTemplate = `{
                 "password": {
                     "type": "string",
                     "example": "securePassword"
+                }
+            }
+        },
+        "domain.SendEmailPayload": {
+            "type": "object",
+            "required": [
+                "body",
+                "subject"
+            ],
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "recipient": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "subject": {
+                    "type": "string"
                 }
             }
         },

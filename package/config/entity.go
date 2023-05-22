@@ -35,4 +35,11 @@ type Config struct {
 
 	RajaongkirApiKey string `mapstructure:"RAJAONGKIR_API_KEY"`
 	RajaongkirApiUrl string `mapstructure:"RAJAONGKIR_API_URL"`
+
+	SmtpHost     string `mapstructure:"SMTP_HOST"`
+	SmtpPort     int    `mapstructure:"SMTP_PORT"`
+	SmtpUser     string `mapstructure:"SMTP_USER"`
+	SmtpPass     string `mapstructure:"SMTP_PASS"`
+	MailFromAddr string `mapstructure:"MAIL_FROM_ADDR"`
+	MailFromName string `mapstructure:"MAIL_FROM_NAME"`
 }

@@ -58,4 +58,12 @@ func optimizeConfig(cfg *Config) {
 	if cfg.RajaongkirApiKey == "" || cfg.RajaongkirApiUrl == "" {
 		log.NewLog().Warning("Please Provide your Rajaongkir API Info", nil, map[string]string{"Url": cfg.RajaongkirApiUrl, "Key": cfg.RajaongkirApiKey})
 	}
+
+	if cfg.MailFromAddr == "" {
+		cfg.MailFromAddr = cfg.SmtpUser
+	}
+
+	if cfg.MailFromName == "" {
+		cfg.MailFromName = cfg.AppName
+	}
 }
